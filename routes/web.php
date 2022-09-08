@@ -17,19 +17,16 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
+require __DIR__.'/shelter.php';
 
-Route::get('/login', function () {
-    return view('home.auth.login');
-});
+// Route::get('/login', function () {
+//     return view('home.auth.login');
+// });
 
-Route::get('/register', function () {
-    return view('home.auth.register');
-});
+// Route::get('/register', function () {
+//     return view('home.auth.register');
+// });
 
 Route::get('/cats', function () {
     return view('home.cats');

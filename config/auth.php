@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'shelters',
         ],
 
         'api' => [
@@ -66,6 +66,11 @@ return [
     */
 
     'providers' => [
+        'shelters' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Shelter::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,

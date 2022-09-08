@@ -16,12 +16,17 @@ class CreateSheltersTable extends Migration
         Schema::create('shelters', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->string('address');
-            $table->string('province');
-            $table->string('city');
-            $table->string('district');
-            $table->string('sub_district');
-            $table->integer('postal_code');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('phone', 15);
+            $table->string('address')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('sub_district')->nullable();
+            $table->integer('postal_code')->nullable();
+            $table->tinyInteger('show_address')->default(0)->comment('0: hide, 1: show');
             $table->tinyInteger('status')->default(1)->comment('0: inactive, 1: active');
             $table->timestamps();
         });
