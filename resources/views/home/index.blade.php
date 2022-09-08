@@ -78,7 +78,8 @@
                                                         <span class="badge text-bg-light shadow-sm fw-light">1 Kg</span>
                                                     </div>
                                                     <div class="position-absolute" style="bottom:0;">
-                                                        <a href="#" class="btn btn-secondary btn-sm shadow-sm">More
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#catDetail"
+                                                            class="btn button-primary btn-sm shadow-sm">
                                                             Detail</a>
                                                     </div>
                                                 </div>
@@ -119,7 +120,8 @@
                                                         <span class="badge text-bg-light shadow-sm fw-light">1 Kg</span>
                                                     </div>
                                                     <div class="position-absolute" style="bottom:0;">
-                                                        <a href="#" class="btn btn-secondary btn-sm shadow-sm">More
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#catDetail"
+                                                            class="btn button-primary btn-sm shadow-sm">
                                                             Detail</a>
                                                     </div>
                                                 </div>
@@ -131,6 +133,10 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <div class="col mt-5 text-center">
+                <a href="/cats" class="btn button-primary">More <i class="bi bi-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>
@@ -150,7 +156,8 @@
                     @for ($i = 1; $i < 5; $i++)
                         <div class="col">
                             <div class="card card-blog h-100 shadow-sm">
-                                <img src="https://picsum.photos/id/1/800/400" alt="blogs" class="w-100" loading="lazy">
+                                <img src="https://cataas.com/cat?type={{ $i }}" alt="blogs" class="w-100"
+                                    loading="lazy">
                                 <div class="card-body text-start">
                                     <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
                                     <div class="d-flex align-items-center">
@@ -167,10 +174,84 @@
                                         nemo sed minus similique possimus id rem officiis facilis rerum eligendi at in quae,
                                         corporis dolorum perspiciatis perferendis asperiores...
                                     </p>
+                                    <a href="/blogs/{{ $i }}" class="btn btn-sm button-primary mt-3">Detail</a>
                                 </div>
                             </div>
                         </div>
                     @endfor
+                </div>
+            </div>
+            <div class="col text-center mt-3">
+                <a href="/blogs" class="btn button-primary">More <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{-- About Us --}}
+    <div class="container my-5 pt-5">
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <img src="https://picsum.photos/500/200" alt="about-us" class="w-100">
+            </div>
+            <div class="col-md-7">
+                <h4 class="pb-3">About Us</h4>
+                <h5>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint quasi, cum beatae veritatis enim eum
+                    explicabo ex libero.
+                </h5>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptas ab qui necessitatibus enim illo
+                    itaque odit, incidunt exercitationem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quis
+                    et alias maxime vero ullam quaerat dolor illo ut! Recusandae culpa temporibus, dolore eos illo quidem
+                    nemo architecto fugit eius? </p>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal --}}
+    <div class="modal fade" id="catDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="p-2 position-relative overflow-hidden">
+                    <div class="position-absolute" style="right: 0; top:0; z-index:10">
+                        <button type="button" class="btn bg-white text-danger" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <section class="splide" id="catSplide" aria-label="Splide Basic HTML Example">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                @for ($i = 1; $i <= 3; $i++)
+                                    <li class="splide__slide">
+                                        <div class="thumbnail-cat">
+                                            <img src="https://cataas.com/cat?type={{ $i }}" alt="cat detail"
+                                                class="w-100">
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-body">
+                    <h5>Cat Name</h5>
+                    <h6>Type | Weight</h6>
+                    <ul class="text-muted" style="margin-left:-10px;">
+                        <li>Age: 9 Month</li>
+                        <li>Weight: 2kg</li>
+                    </ul>
+                    <p class="pb-0">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere dignissimos nam
+                        provident ea deserunt minima asperiores itaque temporibus facilis soluta perferendis voluptatum
+                        laborum corrupti excepturi quae consectetur, velit quis tempora.
+                    </p>
+                    <div class="text-center pt-3">
+                        <button class="btn btn-sm button-primary px-3 rounded-pill"> <i class="bi bi-cart-plus me-1"></i>
+                            Adopt Now</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -213,6 +294,10 @@
                     padding: 0,
                 },
             },
+        }).mount();
+
+        new Splide('#catSplide', {
+            type: 'fade'
         }).mount();
     </script>
 @endsection
