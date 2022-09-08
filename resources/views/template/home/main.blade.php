@@ -5,7 +5,7 @@
 
     .banner {
         position: relative;
-        height: 50vh;
+        max-height: 50vh;
         overflow: hidden;
     }
 
@@ -42,13 +42,16 @@
                                 <div class="offcanvas-body">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li class="nav-item mx-md-3 mx-0">
-                                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
+                                                href="/">Home</a>
                                         </li>
-                                        <li class="nav-item mx-md-3 mx-0">
-                                            <a class="nav-link" href="/cats">Cats</a>
+                                        <li class="nav-item mx-md-3 mx-0 ">
+                                            <a class="nav-link {{ request()->is('cats') ? 'active' : '' }}"
+                                                href="/cats">Cats</a>
                                         </li>
-                                        <li class="nav-item mx-md-3 mx-0">
-                                            <a class="nav-link" href="/blogs">Blogs</a>
+                                        <li class="nav-item mx-md-3 mx-0 ">
+                                            <a class="nav-link {{ request()->is('blogs') ? 'active' : '' }}"
+                                                href="/blogs">Blogs</a>
                                         </li>
                                         <li class="d-md-none d-block mt-3">
                                             <a href="#login" class="btn btn-sm btn-secondary w-100">Login</a>
@@ -60,7 +63,9 @@
                     </nav>
                 </div>
                 <div class="col-2 text-end d-md-block d-none">
-                    <a href="#login" class="btn btn-sm btn-secondary">Login</a>
+                    <a href="#login" class="btn button-primary rounded-pill px-3"><i
+                            class="bi bi-box-arrow-in-right me-1"></i>
+                        Login</a>
                 </div>
             </div>
         </div>
@@ -72,5 +77,17 @@
 
     <div class="container pt-4">
         @yield('content')
+    </div>
+
+    <div class="pt-3">
+        <div class="container-fluid bg-light py-3" style="border-top: 1px solid #dededeb4;">
+            <div class="row">
+                <div class="col text-center">
+                    <h6>
+                        Copyright ©2022. <strong>Cat Shelter Website</strong>. All Rights Reserved
+                    </h6>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

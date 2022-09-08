@@ -16,3 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home.index');
 });
+
+Route::get('/login', function () {
+    return view('home.auth.login');
+});
+
+Route::get('/register', function () {
+    return view('home.auth.register');
+});
+
+Route::get('/cats', function () {
+    return view('home.cats');
+});
+
+Route::get('/blogs', function () {
+    return view('home.blogs');
+});
+
+Route::get('/blogs/{id}', function ($id) {
+    return view('home.blogs-detail', ['id' => $id]);
+});

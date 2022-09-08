@@ -1,0 +1,31 @@
+.btn,
+.btn:hover {
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important
+}
+
+.button-primary,
+.button-primary:focus {
+    transition: all 0.3s;
+    background: #468FAF;
+    color: #fff;
+}
+
+.button-primary:hover {
+    background: #c5eeff;
+    color: #10394b;
+}
+
+.select2-container--default .select2-selection--single {
+    padding-top: 4px !important;
+    border-radius: 8px !important;
+}
+
+.select2-container .select2-selection--single {
+    height: 37px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 5px !important;
+}
