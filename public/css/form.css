@@ -5,6 +5,11 @@
     border: none !important
 }
 
+.form-control {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 .button-primary,
 .button-primary:focus {
     transition: all 0.3s;
@@ -28,4 +33,8 @@
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: 5px !important;
+}
+
+.select2-container {
+    width: 100% !important;
 }

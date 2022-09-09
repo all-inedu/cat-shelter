@@ -21,12 +21,24 @@ Route::get('/login', function () {
     return view('home.auth.login');
 });
 
+Route::get('/forgot', function () {
+    return view('home.auth.forgot');
+});
+
+Route::get('/reset', function () {
+    return view('home.auth.reset');
+});
+
 Route::get('/register', function () {
     return view('home.auth.register');
 });
 
 Route::get('/cats', function () {
     return view('home.cats');
+});
+
+Route::get('/screening/{id}', function ($id) {
+    return view('home.screening', ['id' => $id]);
 });
 
 Route::get('/blogs', function () {
