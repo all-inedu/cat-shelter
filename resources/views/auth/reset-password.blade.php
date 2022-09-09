@@ -14,6 +14,7 @@
 
             <!-- Password Reset Token -->
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <input type="hidden" name="access" value="{{ $request->route('access') }}">
 
             <!-- Email Address -->
             <div>

@@ -17,20 +17,20 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware('guest')->group(function () {
     Route::get('admin', [AuthenticatedSessionController::class, 'create'])
-    ->name('admin.login');
+                ->name('admin.login');
 
     Route::post('admin', [AuthenticatedSessionController::class, 'store']);
 });
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('admin/dashboard', function () {
-            echo 'dashboard disini';
-            echo '<form action="'.route('admin.logout').'" method="POST">';
-            echo csrf_field();
-            echo '<button type="submit">Logout</button>';
-            echo '</form>';
-        })->name('admin.dashboard');
+                    echo 'dashboard disini';
+                    echo '<form action="'.route('admin.logout').'" method="POST">';
+                    echo csrf_field();
+                    echo '<button type="submit">Logout</button>';
+                    echo '</form>';
+                })->name('admin.dashboard');
 
     Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('admin.logout');
+                ->name('admin.logout');
 });

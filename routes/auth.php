@@ -23,13 +23,13 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionShelterController::class, 'store']);
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+    Route::get('forgot-password/{access?}', [PasswordResetLinkController::class, 'create']) #access : admin / shelter
                 ->name('password.request');
 
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
                 ->name('password.email');
 
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+    Route::get('reset-password/{access}/{token}', [NewPasswordController::class, 'create'])
                 ->name('password.reset');
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])

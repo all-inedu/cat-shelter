@@ -13,9 +13,9 @@ class PasswordResetLinkController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('auth.forgot-password');
+        return view('auth.forgot-password', ['request' => $request]);
     }
 
     /**
@@ -30,14 +30,25 @@ class PasswordResetLinkController extends Controller
     {
         $request->validate([
             'email' => ['required', 'email'],
+            'access' => ['required', 'in:admin,shelter'],
         ]);
 
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
-        $status = Password::broker('shelters')->sendResetLink(
-            $request->only('email')
-        );
+        switch ($request->access) {
+            case "admin":
+                $status = Password::sendResetLink(
+                    $request->only('email')
+                );
+                break;
+
+            case "shelter":
+                $status = Password::broker('shelters')->sendResetLink(
+                    $request->only('email')
+                );
+                break;
+        }        
 
         return $status == Password::RESET_LINK_SENT
                     ? back()->with('status', __($status))

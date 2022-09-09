@@ -50,7 +50,7 @@
                             </div>
                             @if (Route::has('password.request'))
                             <div class="text-end">
-                                <a href="{{ route('password.request') }}" class="text-muted text-decoration-none">Forgot Password?</a>
+                                <a href="{{ route('password.request', ['access' => 'admin']) }}" class="text-muted text-decoration-none">Forgot Password?</a>
                             </div>
                             @endif
                             <button class="btn btn-secondary mt-3 w-100" type="submit"><i
