@@ -28,6 +28,7 @@ class CreateSheltersTable extends Migration
             $table->integer('postal_code')->nullable();
             $table->tinyInteger('show_address')->default(0)->comment('0: hide, 1: show');
             $table->tinyInteger('status')->default(1)->comment('0: inactive, 1: active');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

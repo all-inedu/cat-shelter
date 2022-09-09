@@ -28,13 +28,13 @@
             <div class="col-md-6">
 
                 <!-- Session Status -->
-                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')" />
 
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4 alert alert-danger" :errors="$errors" />
 
-                <h3 class="text-center">Login as Shelter</h3>
-                <form action="{{ route('login') }}" method="post">
+                <h3 class="text-center"><b>Login as Shelter</b></h3>
+                <form action="{{ route('login') }}" class="mt-5" method="post">
                     @csrf
                     <div class="row justify-content-center mt-4">
                         <div class="col-md-6">
