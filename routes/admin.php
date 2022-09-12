@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function () {
+    Route::get('admin', [AuthenticatedSessionController::class, 'create'])
+        ->name('admin.login');
+
+    Route::post('admin', [AuthenticatedSessionController::class, 'store']);
+});
+
+Route::middleware('auth:admin')->group(function () {
+    Route::get('admin/dashboard', function () {
+        return view('admin.index');
+    });
+
+    Route::get('admin/blog', function () {
+        return view('admin.blog');
+    });
+
+    Route::get('admin/cat', function () {
+        return view('admin.cat');
+    });
+
+    Route::get('admin/shelter', function () {
+        return view('admin.shelter');
+    });
+
+    Route::get('admin/adopter', function () {
+        return view('admin.adopter');
+    });
+
+    Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('admin.logout');
 });

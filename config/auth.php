@@ -38,6 +38,11 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'shelters',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
             'provider' => 'users',
         ],
 
@@ -66,6 +71,11 @@ return [
     */
 
     'providers' => [
+        'shelters' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Shelter::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
@@ -95,6 +105,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'shelters' => [
+            'provider' => 'shelters',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

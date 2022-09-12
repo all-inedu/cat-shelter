@@ -13,24 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+require __DIR__ . '/shelter.php';
+require __DIR__ . '/admin.php';
+
 Route::get('/', function () {
     return view('home.index');
-});
-
-Route::get('/login', function () {
-    return view('home.auth.login');
-});
-
-Route::get('/forgot', function () {
-    return view('home.auth.forgot');
-});
-
-Route::get('/reset', function () {
-    return view('home.auth.reset');
-});
-
-Route::get('/register', function () {
-    return view('home.auth.register');
 });
 
 Route::get('/cats', function () {
