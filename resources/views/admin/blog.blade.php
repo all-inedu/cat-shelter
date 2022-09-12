@@ -55,7 +55,8 @@
                             <th nowrap>Category Name</th>
                             <th nowrap>Description</th>
                             <th nowrap>Thumbnail</th>
-                            <th nowrap class="text-end">Published Date</th>
+                            <th nowrap>Published Date</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-muted">
@@ -72,7 +73,13 @@
                                         <img src="https://cataas.com/cat?type={{ $i * 12 }}" class="w-100">
                                     </div>
                                 </td>
-                                <td class="text-end">24 July 2022</td>
+                                <td>24 July 2022</td>
+                                <td nowrap>
+                                    <a href="{{ url('/admin/blog/' . $i) }}" class="btn cat-bg-primary">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Detail
+                                    </a>
+                                </td>
                             </tr>
                         @endfor
                     </tbody>

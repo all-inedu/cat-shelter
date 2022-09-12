@@ -31,6 +31,19 @@ Route::middleware('auth:admin')->group(function () {
         return view('admin.blog');
     });
 
+    Route::get('admin/blog/new', function () {
+        return view('admin.blog-new');
+    });
+
+    Route::get('admin/blog/{id}', function () {
+        return view('admin.blog-view');
+    });
+
+    Route::get('admin/blog/{id}/edit', function () {
+        return view('admin.blog-edit');
+    });
+
+
     Route::get('admin/cat', function () {
         return view('admin.cat');
     });
