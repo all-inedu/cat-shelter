@@ -22,7 +22,7 @@ class CreateCatsTable extends Migration
             $table->string('name')->nullable();
             $table->integer('age');
             $table->integer('weight');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->tinyInteger('status')->default(1)->comment('0: inactive, 1: active');
             $table->timestamps();
         });

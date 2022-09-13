@@ -19,11 +19,11 @@ class CreateAdoptersTable extends Migration
             $table->string('phone_number');
             $table->string('email')->nullable();
             $table->string('address');
-            $table->string('province');
-            $table->string('city');
-            $table->string('district');
-            $table->string('sub_district');
-            $table->integer('postal_code');
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('sub_district')->nullable();
+            $table->integer('postal_code')->nullable();
             $table->tinyInteger('status')->default(1)->comment('0: inactive, 1: active');
             $table->timestamps();
         });

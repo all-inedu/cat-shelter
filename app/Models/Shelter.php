@@ -17,6 +17,7 @@ class Shelter extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'image',
         'email',
         'password',
         'phone',

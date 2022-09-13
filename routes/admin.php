@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Auth;
@@ -23,13 +24,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('admin/dashboard', function () {
-                    echo 'dashboard disini';
-                    echo '<form action="'.route('admin.logout').'" method="POST">';
-                    echo csrf_field();
-                    echo '<button type="submit">Logout</button>';
-                    echo '</form>';
-                })->name('admin.dashboard');
+    Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('admin.logout');
