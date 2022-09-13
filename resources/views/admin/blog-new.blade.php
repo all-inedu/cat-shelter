@@ -10,7 +10,7 @@
         <div class="fw-bold text-muted">
             Blog Post
         </div>
-        <a href="{{ url('admin/blog') }}" class="btn cat-bg-primary">
+        <a href="{{ url('admin/blog') }}" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>
             Back
         </a>

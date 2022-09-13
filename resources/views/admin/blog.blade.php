@@ -22,7 +22,7 @@
         <div class="fw-bold text-muted">
             Blog Post
         </div>
-        <a href="{{ url('admin/blog/new') }}" class="btn cat-bg-primary">
+        <a href="{{ url('admin/blog/new') }}" class="btn button-primary">
             <i class="bi bi-plus me-1"></i>
             Create
         </a>
@@ -38,7 +38,7 @@
                 <div class="d-flex align-items-center justify-content-between w-100">
                     <input type="text" name="" placeholder="Search" class="form-control">
                     <div class="search text-end" style="width: 4%">
-                        <button class="btn cat-bg-primary ps-3 pe-2" type="submit">
+                        <button class="btn button-primary ps-3 pe-2" type="submit">
                             <i class="bi bi-search"></i>&nbsp;
                         </button>
                     </div>
@@ -75,7 +75,7 @@
                                 </td>
                                 <td>24 July 2022</td>
                                 <td nowrap>
-                                    <a href="{{ url('/admin/blog/' . $i) }}" class="btn cat-bg-primary">
+                                    <a href="{{ url('/admin/blog/' . $i) }}" class="btn button-primary">
                                         <i class="bi bi-info-circle me-1"></i>
                                         Detail
                                     </a>

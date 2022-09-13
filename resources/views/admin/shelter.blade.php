@@ -16,7 +16,7 @@
                 <div class="d-flex align-items-center justify-content-between w-100">
                     <input type="text" name="" placeholder="Search" class="form-control">
                     <div class="search text-end" style="width: 4%">
-                        <button class="btn cat-bg-primary ps-3 pe-2" type="submit">
+                        <button class="btn button-primary ps-3 pe-2" type="submit">
                             <i class="bi bi-search"></i>&nbsp;
                         </button>
                     </div>
@@ -36,7 +36,8 @@
                             <th nowrap class="text-center">Unadopted Cat</th>
                             <th nowrap class="text-center">Adopted Cat</th>
                             <th nowrap class="text-center">Total Cat</th>
-                            <th nowrap class="text-end">Joined Date</th>
+                            <th nowrap>Joined Date</th>
+                            <th nowrap class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-muted">
@@ -51,6 +52,12 @@
                                 <td class="text-center">3 Cats</td>
                                 <td class="text-center">6 Cats</td>
                                 <td class="text-end">24 July 2022</td>
+                                <td nowrap class="text-end">
+                                    <a href="{{ url('/admin/shelter/' . $i) }}" class="btn button-primary">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Detail
+                                    </a>
+                                </td>
                             </tr>
                         @endfor
                     </tbody>

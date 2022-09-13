@@ -24,13 +24,15 @@
 .button-primary,
 .button-primary:focus {
     transition: all 0.3s;
-    background: #468FAF;
+    background: rgb(44, 125, 160);
+    background: linear-gradient(90deg, rgba(44, 125, 160, 1) 0%, rgb(56, 93, 110) 100%);
     color: #fff;
 }
 
 .button-primary:hover {
-    background: #c5eeff;
-    color: #10394b;
+    background: rgb(44, 125, 160);
+    background: linear-gradient(90deg, rgba(44, 125, 160, 1) 0%, rgb(143, 187, 208) 100%);
+    color: #fff;
 }
 
 .select2-container--default .select2-selection--single {

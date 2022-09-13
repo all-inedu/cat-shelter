@@ -10,7 +10,7 @@
         <div class="fw-bold text-muted">
             Blog Post
         </div>
-        <a href="<?php echo e(url('admin/blog/3')); ?>" class="btn cat-bg-primary">
+        <a href="<?php echo e(url('admin/blog/3')); ?>" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>
             Back
         </a>

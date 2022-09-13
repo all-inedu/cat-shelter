@@ -25,7 +25,7 @@
         <div class="fw-bold text-muted">
             Blog Post
         </div>
-        <a href="<?php echo e(url('admin/blog')); ?>" class="btn cat-bg-primary">
+        <a href="<?php echo e(url('admin/blog')); ?>" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>
             Back
         </a>
@@ -109,7 +109,7 @@
                                 </td>
                                 <td>24 July 2022</td>
                                 <td nowrap>
-                                    <button class="btn cat-bg-primary" data-bs-toggle="modal" data-bs-target="#reply">
+                                    <button class="btn button-primary" data-bs-toggle="modal" data-bs-target="#reply">
                                         <i class="bi bi-reply me-1"></i>
                                         Reply
                                     </button>
@@ -156,7 +156,7 @@
                             <i class="bi bi-x-circle me-1"></i>
                             Close
                         </button>
-                        <button type="submit" class="btn cat-bg-primary">
+                        <button type="submit" class="btn button-primary">
                             <i class="bi bi-trash2 me-1"></i>
                             Yes, Delete
                         </button>
@@ -200,7 +200,7 @@
                             <i class="bi bi-x-circle me-1"></i>
                             Close
                         </button>
-                        <button type="submit" class="btn cat-bg-primary">
+                        <button type="submit" class="btn button-primary">
                             <i class="bi bi-save me-1"></i>
                             Save changes
                         </button>

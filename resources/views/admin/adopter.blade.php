@@ -16,7 +16,7 @@
                 <div class="d-flex align-items-center justify-content-between w-100">
                     <input type="text" name="" placeholder="Search" class="form-control">
                     <div class="search text-end" style="width: 4%">
-                        <button class="btn cat-bg-primary ps-3 pe-2" type="submit">
+                        <button class="btn button-primary ps-3 pe-2" type="submit">
                             <i class="bi bi-search"></i>&nbsp;
                         </button>
                     </div>

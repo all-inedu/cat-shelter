@@ -48,8 +48,16 @@ Route::middleware('auth:admin')->group(function () {
         return view('admin.cat');
     });
 
+    Route::get('admin/cat/{id}', function () {
+        return view('admin.cat-view');
+    });
+
     Route::get('admin/shelter', function () {
         return view('admin.shelter');
+    });
+
+    Route::get('admin/shelter/{id}', function () {
+        return view('admin.shelter-view');
     });
 
     Route::get('admin/adopter', function () {
