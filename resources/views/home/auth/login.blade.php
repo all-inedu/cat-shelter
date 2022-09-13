@@ -26,6 +26,9 @@
                 <img src="{{ asset('img/bg-login.png') }}" alt="Login" class="login-bg w-100">
             </div>
             <div class="col-md-6">
+                <div class="position-absolute" style="top:10px;">
+                    <a href="/" class="text-decoration-none text-muted"><i class="bi bi-arrow-left me-1"></i> Home</a>
+                </div>
 
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')" />
@@ -49,9 +52,16 @@
                                     autocomplete="false">
                             </div>
                             @if (Route::has('password.request'))
+<<<<<<< HEAD
                             <div class="text-end">
                                 <a href="{{ route('password.request', ['access' => 'shelter']) }}" class="text-muted text-decoration-none">Forgot Password?</a>
                             </div>
+=======
+                                <div class="text-end">
+                                    <a href="{{ route('password.request') }}" class="text-muted text-decoration-none">Forgot
+                                        Password?</a>
+                                </div>
+>>>>>>> 6bde378b3e3c8f95fc4bb3ce3c62e167dd82d79c
                             @endif
                             <button class="btn btn-secondary mt-3 w-100" type="submit"><i
                                     class="bi bi-box-arrow-in-right me-1"></i>

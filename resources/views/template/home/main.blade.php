@@ -14,6 +14,12 @@
         object-fit: cover;
         object-position: top;
     }
+
+    @media screen and (max-width: 600px) {
+        .banner {
+            height: auto !important;
+        }
+    }
 </style>
 
 @extends('template.app')
@@ -54,7 +60,7 @@
                                                 href="/blogs">Blogs</a>
                                         </li>
                                         <li class="d-md-none d-block mt-3">
-                                            <a href="#login" class="btn btn-sm btn-secondary w-100">Login</a>
+                                            <a href="/login" class="btn btn-sm btn-secondary w-100">Login</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -63,7 +69,7 @@
                     </nav>
                 </div>
                 <div class="col-2 text-end d-md-block d-none">
-                    <a href="#login" class="btn button-primary rounded-pill px-3"><i
+                    <a href="/login" class="btn button-primary rounded-pill px-3"><i
                             class="bi bi-box-arrow-in-right me-1"></i>
                         Login</a>
                 </div>

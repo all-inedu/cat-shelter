@@ -202,9 +202,9 @@
                             laborum corrupti excepturi quae consectetur, velit quis tempora.
                         </p>
                         <div class="text-center pt-3">
-                            <button class="btn btn-sm button-primary px-3 rounded-pill"> <i
+                            <a href="/screening/1" class="btn btn-sm button-primary px-3 rounded-pill"> <i
                                     class="bi bi-cart-plus me-1"></i>
-                                Adopt Now</button>
+                                Adopt Now</a>
                         </div>
                     </div>
                 </div>
