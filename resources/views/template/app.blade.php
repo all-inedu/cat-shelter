@@ -63,7 +63,10 @@
     </head>
 
     <body>
+        <x-session-alert :notif="session('notif')"></x-session-alert>
+
         @yield('template')
+
     </body>
 
     </html>

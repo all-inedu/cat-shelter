@@ -28,10 +28,10 @@
             <div class="col-md-6">
 
                 <!-- Session Status -->
-                <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')" />
+                {{-- <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')" /> --}}
 
                 <!-- Validation Errors -->
-                <x-auth-validation-errors class="mb-4 alert alert-danger" :errors="$errors" />
+                {{-- <x-auth-validation-errors class="m-0 alert alert-danger" :errors="$errors" /> --}}
 
                 <h3 class="text-center"><b>Login as Administrator</b></h3>
                 <form action="{{ route('admin.login') }}" class="mt-5" method="post">
@@ -40,17 +40,29 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="user">Email</label>
-                                <input type="email" name="email" id="user" class="form-control"
-                                    autocomplete="false" readonly onfocus="this.removeAttribute('readonly');">
+                                <input type="email" name="email" id="user"
+                                    class="form-control @error('email') is-invalid @enderror" autocomplete="false" readonly
+                                    onfocus="this.removeAttribute('readonly');">
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="pass">Password</label>
-                                <input type="password" name="password" id="pass" class="form-control"
-                                    autocomplete="false">
+                                <input type="password" name="password" id="pass"
+                                    class="form-control @error('password') is-invalid @enderror" autocomplete="false">
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             @if (Route::has('password.request'))
                                 <div class="text-end">
-                                    <a href="{{ route('password.request', ['access' => 'admin']) }}" class="text-muted text-decoration-none">Forgot
+                                    <a href="{{ route('password.request', ['access' => 'admin']) }}"
+                                        class="text-muted text-decoration-none">Forgot
                                         Password?</a>
                                 </div>
                             @endif

@@ -36,7 +36,7 @@
                         Category :
                     </div>
                     <div class="col-md-10">
-                        <select id="cat" class="form-control w-50" name="category">
+                        <select id="cat" class="form-control w-50" name="category" multiple="multiple">
                             <option></option>
                             @for ($i = 1; $i <= 5; $i++)
                                 <option value="{{ $i }}">Category {{ $i }}</option>

@@ -57,8 +57,7 @@ class DatabaseSeeder extends Seeder
 
         // $this->cat_dummy();
 
-        $this->order_dummy();
-
+        // $this->order_dummy();
     }
 
     public function main_data()
@@ -122,10 +121,10 @@ class DatabaseSeeder extends Seeder
         ];
 
         Order::all()->each(function ($order) use ($questions) {
-            for ($i = 0 ; $i < count($questions) ; $i++) {
+            for ($i = 0; $i < count($questions); $i++) {
                 $order->screening()->create([
                     'question' => $questions[$i],
-                    'answer' => $this->faker->text,    
+                    'answer' => $this->faker->text,
                 ]);
             }
         });

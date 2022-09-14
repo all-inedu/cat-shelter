@@ -10,7 +10,7 @@
         <div class="fw-bold text-muted">
             Blog Post
         </div>
-        <a href="<?php echo e(url('admin/blog')); ?>" class="btn cat-bg-primary">
+        <a href="<?php echo e(url('admin/blog')); ?>" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>
             Back
         </a>
@@ -36,7 +36,7 @@
                         Category :
                     </div>
                     <div class="col-md-10">
-                        <select id="cat" class="form-control w-50" name="category">
+                        <select id="cat" class="form-control w-50" name="category" multiple="multiple">
                             <option></option>
                             <?php for($i = 1; $i <= 5; $i++): ?>
                                 <option value="<?php echo e($i); ?>">Category <?php echo e($i); ?></option>
