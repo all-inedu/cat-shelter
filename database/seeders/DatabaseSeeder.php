@@ -54,10 +54,12 @@ class DatabaseSeeder extends Seeder
         // $this->main_data();
 
         // $this->blog_dummy();
+        $this->comment_dummy();
 
         // $this->cat_dummy();
 
-        $this->order_dummy();
+        // $this->order_dummy();
+
 
     }
 
@@ -81,6 +83,17 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => Carbon::now()
                 ]
             );
+        });
+    }
+    
+    public function comment_dummy()
+    {
+        Blog::all()->each(function ($blog) {
+            $blog->comments()->create([
+                'description' => $this->faker->text,
+                'from' => $this->faker->firstName.$this->faker->lastName,
+                'email' => $this->faker->safeEmail,
+            ]);
         });
     }
 

@@ -17,18 +17,28 @@
     </div>
 @endsection
 
+@section('notif')
+    <div class="mt-2">
+        @if($errors->any())
+            {!! implode('', $errors->all('<div class="alert alert-danger mb-0" role="alert">:message</div>')) !!}
+        @endif
+    </div>
+@endsection
+
 @section('content')
     <div class="row p-0 g-2">
         <div class="col-12 bg-white p-3">
             <h2 class="mb-0 pb-0">Create a Blog Post</h2>
             <hr class="hr-cat mb-5">
-            <form action="" method="POST">
+
+            <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="row g-2 mb-2">
                     <div class="col-md-2">
                         Blog Title :
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="title">
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
@@ -36,11 +46,11 @@
                         Category :
                     </div>
                     <div class="col-md-10">
-                        <select id="cat" class="form-control w-50" name="category">
+                        <select id="cat" class="form-control w-50" name="category[]" multiple="multiple">
                             <option></option>
-                            @for ($i = 1; $i <= 5; $i++)
-                                <option value="{{ $i }}">Category {{ $i }}</option>
-                            @endfor
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -49,7 +59,7 @@
                         Thumbnail :
                     </div>
                     <div class="col-md-10">
-                        <input type="file" class="form-control w-25">
+                        <input type="file" name="thumbnail" class="form-control w-25">
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
@@ -57,7 +67,7 @@
                         Description :
                     </div>
                     <div class="col-md-10">
-                        <textarea name="" id="" class="form-control" rows="13"></textarea>
+                        <textarea id="" name="content" class="form-control" rows="13"></textarea>
                     </div>
                 </div>
                 <div class="my-3 text-end">

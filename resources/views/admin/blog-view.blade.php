@@ -34,49 +34,44 @@
 
 @section('content')
     <div class="thumbnail shadow-sm mb-2">
-        <img src="https://cataas.com/cat?type=1" alt="thumbnail" class="w-100">
+        {{-- <img src="https://cataas.com/cat?type=1" alt="thumbnail" class="w-100"> --}}
+        <img src="{{ asset('blogs/'.$blog->thumbnail) }}" alt="thumbnail" class="w-100">
     </div>
     <div class="mb-3 text-end">
-        <a href="{{ url('/admin/blog/3/edit') }}" class="btn btn-secondary"><i class="bi bi-pencil-square me-1"></i>Edit</a>
+        <a href="{{ url('/admin/blog/'.$id.'/edit') }}" class="btn btn-secondary"><i class="bi bi-pencil-square me-1"></i>Edit</a>
         <button data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger"><i
                 class="bi bi-trash2 me-1"></i>Delete</button>
     </div>
     <div class="row p-0 g-2">
         <div class="col-12 bg-white p-3">
             <div class="d-flex align-items-center mb-4">
-                <div class="badge bg-secondary me-3">Category Name</div>
+                @foreach ($blog->category as $category)
+                    <div class="badge bg-secondary me-3">{{ $category->name }}</div>
+                @endforeach
                 <div class="text-muted">
-                    <i class="bi bi-calendar-event"></i> 24 July 2022
+                    <i class="bi bi-calendar-event"></i> {{ date('d M Y', strtotime($blog->updated_at)) }}
                 </div>
             </div>
 
             <h3>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit
+                {{ $blog->title }}
                 <hr class="hr-cat mb-3">
             </h3>
             <p class="p-0 b-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam beatae tenetur quia unde quaerat voluptatum
-                recusandae vitae iste, doloribus esse. Numquam officiis beatae ad in dignissimos aliquam, deleniti quos non.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, repellendus qui vitae cumque tempora
-                sequi aliquam quidem dignissimos alias rem dolorem quae eum vel suscipit unde inventore animi distinctio
-                ipsum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quae quibusdam explicabo at
-                ducimus quis nemo exercitationem mollitia fugit maiores animi quos, itaque doloremque rem veniam. Officiis
-                magnam eum repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eaque similique
-                quaerat, et, dolorum vitae soluta corrupti, molestiae rem dolor voluptas necessitatibus consequuntur quasi
-                deserunt ab officia doloremque sit beatae! <br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, praesentium accusamus voluptatum amet quas
-                laudantium commodi, veniam maxime assumenda nostrum quaerat distinctio. Obcaecati, velit fugiat quaerat
-                nostrum asperiores nesciunt ea? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit maiores
-                tenetur autem optio saepe, nam error, aspernatur obcaecati, laboriosam consequatur porro nobis! Dolores qui
-                soluta ad perspiciatis non quidem consectetur? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum quisquam non ullam minus deserunt, in officia sunt sint earum enim maiores temporibus, debitis
-                architecto quo ut explicabo vero eum illum. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Deleniti officiis accusamus, numquam iusto animi excepturi ipsam sequi, dicta quod sunt illo rerum vel qui
-                maiores autem aliquam sit maxime illum.
+                {{ $blog->content }}
             </p>
         </div>
     </div>
 
+    <!-- Session Status -->
+    @if(session()->has('reply-success'))
+        <div class="alert alert-success mb-0 fade show" role="alert">
+            {{ session()->get('reply-success') }}
+        </div>
+    @endif
+
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4 alert alert-danger" :errors="$errors" />
 
     {{-- Comments --}}
     <div class="row mt-2">
@@ -97,29 +92,39 @@
                         </tr>
                     </thead>
                     <tbody class="text-muted">
-                        @for ($i = 1; $i < 8; $i++)
+                        <?php $no = ($comments->currentpage()-1)* $comments->perpage() + 1;?>
+                        @foreach ($comments as $comment)
                             <tr class="align-middle">
-                                <td>{{ $i }}</td>
-                                <td nowrap>Username</td>
-                                <td>user@gmail.com</td>
-                                <td>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam eligendi earum
-                                    voluptatibus est porro adipisci, voluptates natus blanditiis quaerat at veritatis
-                                    dolorem, molestias quae? Nostrum sequi a repellendus veniam magni?
-                                </td>
-                                <td>24 July 2022</td>
+                                <td>{{ $no++ }}</td>
+                                <td nowrap>{{ $comment->from }}</td>
+                                <td>{{ $comment->email }}</td>
+                                <td>{{ $comment->description }}</td>
+                                <td>{{ date('d M Y H:i:s', strtotime($comment->updated_at)) }}</td>
                                 <td nowrap>
-                                    <button class="btn button-primary" data-bs-toggle="modal" data-bs-target="#reply">
+                                    <button class="btn button-primary btn-reply" data-id="{{ $comment->id }}" data-bs-toggle="modal">
+                                        @if (!$comment->replies)
                                         <i class="bi bi-reply me-1"></i>
                                         Reply
+                                        @else
+                                        View Reply
+                                        @endif
                                     </button>
                                 </td>
                             </tr>
-                        @endfor
+                        @endforeach
+
+                        @unless (count($comments)) 
+                            <tr align="center">
+                                <td colspan="7">No comment</td>
+                            </tr>
+                        @endunless
                     </tbody>
                 </table>
             </div>
-            <nav aria-label="Page navigation example" class="mt-1">
+            <div class="d-flex justify-content-end">
+                {{ $comments->links() }}
+            </div>
+            {{-- <nav aria-label="Page navigation example" class="mt-1">
                 <ul class="pagination justify-content-end">
                     <li class="page-item">
                         <a class="page-link ps-2" href="#" aria-label="Previous">
@@ -135,7 +140,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> --}}
         </div>
     </div>
 
@@ -144,7 +149,9 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <form action="" method="delete">
+                    <form action="{{ route('admin.blog.delete', ['id' => $blog->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
                         <h5>
                             Are you sure <br>
                             you want delete this?
@@ -169,7 +176,9 @@
     {{-- Add Comment --}}
     <div class="modal fade" id="reply" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <form action="" method="post">
+            <form action="{{ route('admin.blog.reply.comment') }}" method="post">
+                @csrf
+                <input type="hidden" name="add-id" value="">
                 <div class="modal-content">
                     <div class="modal-body">
                         <h5>Comments</h5>
@@ -180,11 +189,11 @@
                                     <i class="bi bi-person-circle fs-1"></i>
                                 </div>
                                 <div class="username">
-                                    <strong class="text-muted">Username</strong> <br>
-                                    <small>25 August 2022</small>
+                                    <strong class="text-muted s-username">Username</strong> <br>
+                                    <small class="s-date"></small>
                                 </div>
                             </div>
-                            <p class="mt-2 mb-0">
+                            <p class="mt-2 mb-0 s-desc">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae, illo ducimus quasi
                                 aliquid quae aut, voluptatum dolore dolor id non expedita cupiditate officiis esse, ex ipsam
                                 adipisci dolores aliquam?
@@ -192,7 +201,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <textarea name="" id="" class="form-control" rows="5" placeholder="Reply here .."></textarea>
+                            <textarea name="r-desc" id="reply-box" class="form-control" rows="5" placeholder="Reply here .."></textarea>
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
@@ -200,7 +209,7 @@
                             <i class="bi bi-x-circle me-1"></i>
                             Close
                         </button>
-                        <button type="submit" class="btn button-primary">
+                        <button type="submit" class="btn button-primary" id="btn-save">
                             <i class="bi bi-save me-1"></i>
                             Save changes
                         </button>
@@ -209,5 +218,35 @@
             </form>
         </div>
     </div>
-    <script></script>
+    <script>
+        $(".btn-reply").each(function () {
+            $(this).click(function () {
+
+                var id = $(this).data('id');
+                $("input[name=add-id]").val(id);
+
+                $.ajax({
+                    url: "{{ route('admin.blog.view.comment') }}",
+                    data: {
+                        id: id
+                    },
+                }).done(function (obj) {
+                    
+                    $("#reply").modal('show')
+
+                    $(".s-username").html(obj.from)
+                    $(".s-date").html(obj.updated_at)
+                    $(".s-desc").html(obj.description)
+
+                    if (obj.replies !== null) {
+                        
+                        $("#reply-box").val(obj.replies.description)
+                    } else {
+
+                        $("#reply-box").val('')
+                    }
+                })
+            })
+        });
+    </script>
 @endsection

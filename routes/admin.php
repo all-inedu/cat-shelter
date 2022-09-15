@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -27,21 +28,20 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])
                 ->name('admin.dashboard');
 
-    Route::get('admin/blog', function () {
-        return view('admin.blog');
-    });
+    Route::get('blog', [BlogController::class, 'index'])->name('admin.blog');
+    Route::post('blog', [BlogController::class, 'store'])->name('admin.blog.store');
 
-    Route::get('admin/blog/new', function () {
-        return view('admin.blog-new');
-    });
+    Route::get('admin/blog/new', [BlogController::class, 'new']);
 
-    Route::get('admin/blog/{id}', function () {
-        return view('admin.blog-view');
-    });
+    Route::get('admin/blog/{id}', [BlogController::class, 'detail']);
 
-    Route::get('admin/blog/{id}/edit', function () {
-        return view('admin.blog-edit');
-    });
+    Route::get('comment', [BlogController::class, 'view_comment'])->name('admin.blog.view.comment');
+    Route::post('comment', [BlogController::class, 'reply'])->name('admin.blog.reply.comment');
+
+    Route::get('admin/blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+    Route::post('admin/blog/{id}/edit', [BlogController::class, 'update'])->name('admin.blog.update');
+
+    Route::delete('blog/{id}', [BlogController::class, 'delete'])->name('admin.blog.delete');
 
 
     Route::get('admin/cat', function () {

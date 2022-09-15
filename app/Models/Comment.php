@@ -21,5 +21,18 @@ class Comment extends Model
         'status',
     ];
 
+    public function getUpdatedAtAttribute($value)
+    {
+        return date('d M Y H:i:s', strtotime($value));
+    }
 
+    public function blog()
+    {
+        return $this->belongsTo(Blog::class, 'blog_id', 'id');
+    }
+
+    public function replies()
+    {
+        return $this->hasOne(Replies::class, 'comment_id', 'id');
+    }
 }

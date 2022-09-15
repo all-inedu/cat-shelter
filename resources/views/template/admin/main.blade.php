@@ -152,6 +152,8 @@
                         </div>
                     </div>
 
+                    @yield('notif')
+
                     <div class="p-0 pt-2">
                         @yield('content')
                     </div>

@@ -52,16 +52,9 @@
                                     autocomplete="false">
                             </div>
                             @if (Route::has('password.request'))
-<<<<<<< HEAD
                             <div class="text-end">
                                 <a href="{{ route('password.request', ['access' => 'shelter']) }}" class="text-muted text-decoration-none">Forgot Password?</a>
                             </div>
-=======
-                                <div class="text-end">
-                                    <a href="{{ route('password.request') }}" class="text-muted text-decoration-none">Forgot
-                                        Password?</a>
-                                </div>
->>>>>>> 6bde378b3e3c8f95fc4bb3ce3c62e167dd82d79c
                             @endif
                             <button class="btn btn-secondary mt-3 w-100" type="submit"><i
                                     class="bi bi-box-arrow-in-right me-1"></i>

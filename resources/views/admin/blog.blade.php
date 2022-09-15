@@ -29,14 +29,27 @@
     </div>
 @endsection
 
+@section('notif')
+    <div class="mt-2">
+        @if(session()->has('add-blog-successful'))
+          <div class="alert alert-success mb-0 fade show" role="alert">
+            {{ session()->get('add-blog-successful') }}
+          </div>
+        @elseif(session()->has('delete-blog-success'))
+            <div class="alert alert-success mb-0 fade show" role="alert">
+                {{ session()->get('delete-blog-success') }}
+            </div>
+        @endif
+    </div>
+@endsection
+
 @section('content')
     <div class="row p-0 g-2">
         <div class="col-12 bg-white p-3">
             {{-- Search --}}
-            <form action="">
-                @csrf
+            <form action="{{ route('admin.blog') }}" method="GET">
                 <div class="d-flex align-items-center justify-content-between w-100">
-                    <input type="text" name="" placeholder="Search" class="form-control">
+                    <input type="text" name="search_query" placeholder="Search" class="form-control">
                     <div class="search text-end" style="width: 4%">
                         <button class="btn button-primary ps-3 pe-2" type="submit">
                             <i class="bi bi-search"></i>&nbsp;
@@ -60,32 +73,53 @@
                         </tr>
                     </thead>
                     <tbody class="text-muted">
-                        @for ($i = 1; $i < 8; $i++)
+                        <?php $no = ($blogs->currentpage()-1)* $blogs->perpage() + 1;?>
+                        @foreach ($blogs as $blog)
                             <tr class="align-middle">
-                                <td>{{ $i }}</td>
-                                <td nowrap>Title Name</td>
-                                <td>Category</td>
-                                <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam eligendi earum
-                                    voluptatibus est porro adipisci, voluptates natus blanditiis quaerat at veritatis
-                                    dolorem, molestias quae? Nostrum sequi a repellendus veniam magni?</td>
-                                <td class="text-center">
-                                    <div class="thumbnail">
-                                        <img src="https://cataas.com/cat?type={{ $i * 12 }}" class="w-100">
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $blog->title }}</td>
+                                <td>
+                                    @foreach ($blog->category as $category)
+                                    <div class="cat-bg-primary m-1 p-1 px-2 rounded">
+                                        {{ $category->name }}
                                     </div>
+                                    @endforeach
                                 </td>
-                                <td>24 July 2022</td>
+                                <td>{{ $blog->content }}</td>
+                                <td class="text-center">
+                                    @if ($blog->thumbnail)
+                                        <div class="thumbnail">
+                                            <img src="{{ asset('blogs/'.$blog->thumbnail) }}" class="w-100 h-100">
+                                        </div>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($blog->published_date)
+                                        {{ date('M d, Y H:i', strtotime($blog->published_date)) }}
+                                    @else
+                                        {{ "not published" }}
+                                    @endif
+                                </td>
                                 <td nowrap>
-                                    <a href="{{ url('/admin/blog/' . $i) }}" class="btn button-primary">
+                                    <a href="{{ url('/admin/blog/' . $blog->id) }}" class="btn button-primary">
                                         <i class="bi bi-info-circle me-1"></i>
                                         Detail
                                     </a>
                                 </td>
                             </tr>
-                        @endfor
+                        @endforeach
+
+                        @unless (count($blogs)) 
+                            <tr>
+                                <td colspan="7">No data</td>
+                            </tr>
+                        @endunless
                     </tbody>
                 </table>
             </div>
-            <nav aria-label="Page navigation example" class="mt-1">
+            {{-- <nav aria-label="Page navigation example" class="mt-1">
                 <ul class="pagination justify-content-end">
                     <li class="page-item">
                         <a class="page-link ps-2" href="#" aria-label="Previous">
@@ -101,7 +135,11 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> --}}
+            {{-- Pagination --}}
+            <div class="d-flex justify-content-end">
+                {{ $blogs->links() }}
+            </div>
         </div>
 
     </div>
