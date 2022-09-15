@@ -76,7 +76,6 @@
 <?php endif; ?>
 
         <?php echo $__env->yieldContent('template'); ?>
-
     </body>
 
     </html>

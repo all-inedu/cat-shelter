@@ -45,7 +45,7 @@
 <?php $__env->startSection('page-title'); ?>
     <div class="d-flex w-100 justify-content-between align-items-center">
         <div class="fw-bold text-muted">
-            Cat Detail
+            Shelter Detail
         </div>
         <a href="<?php echo e(url('admin/blog')); ?>" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>

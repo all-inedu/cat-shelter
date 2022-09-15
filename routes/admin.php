@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware('guest')->group(function () {
     Route::get('admin', [AuthenticatedSessionController::class, 'create'])
-                ->name('admin.login');
+        ->name('admin.login');
 
     Route::post('admin', [AuthenticatedSessionController::class, 'store']);
 });
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])
-                ->name('admin.dashboard');
+        ->name('admin.dashboard');
 
     Route::get('admin/blog', function () {
         return view('admin.blog');
@@ -64,6 +64,10 @@ Route::middleware('auth:admin')->group(function () {
         return view('admin.adopter');
     });
 
+    Route::get('admin/adopter/{id}', function () {
+        return view('admin.adopter-view');
+    });
+
     Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('admin.logout');
+        ->name('admin.logout');
 });
