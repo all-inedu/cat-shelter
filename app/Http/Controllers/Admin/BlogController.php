@@ -39,10 +39,11 @@ class BlogController extends Controller
             $blog = Blog::find($request->route('id'));
             $blog->delete();
         } catch (Exception $e) {
-            return Redirect::back()->withErrors($e->getMessage());
+            return Redirect::back()->with('notif', ['status' => 'error', 'title' => $e->getMessage()]);
         }
 
-        return redirect('admin/blog')->with('delete-blog-success', 'The blog has successfully deleted');
+        return redirect('admin/blog')->with('notif', ['status' => 'success', 'title' => 'The blog has successfully deleted']);
+        
     }
 
     public function edit(Request $request)
@@ -58,6 +59,7 @@ class BlogController extends Controller
         $rules = [
             'id' => 'required|exists:blogs,id',
             'title' => 'required|max:255',
+            'category' => 'required|array',
             'category.*' => 'required|exists:categories,id|distinct',
             'thumbnail' => 'nullable|mimes:jpg,jpeg,bmp,png,webp|max:2048',
             'content' => 'required'
@@ -108,10 +110,10 @@ class BlogController extends Controller
             
         } catch (Exception $e) {
             DB::rollBack();
-            return Redirect::back()->withErrors($e->getMessage());
+            return Redirect::back()->with('notif', ['status' => 'error', 'title' => $e->getMessage()]);
         }
 
-        return redirect('admin/blog/'.$request->route('id').'/edit')->with('update-blog-successful', 'Blog has been updated');
+        return redirect('admin/blog/'.$request->route('id').'/edit')->with('notif', ['status' => 'success', 'title' => 'Blog has been updated']);
     }
 
     public function detail(Request $request)
@@ -185,6 +187,7 @@ class BlogController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
+            'category' => 'required|array',
             'category.*' => 'required|exists:categories,id|distinct',
             'thumbnail' => 'nullable|mimes:jpg,jpeg,bmp,png,webp|max:2048',
             'content' => 'required'
@@ -202,7 +205,6 @@ class BlogController extends Controller
             $med_file_path = $request->file('thumbnail')->storeAs('', $time.'-'.$file_name.'.'.$file_format, ['disk' => 'public-blog']);
             $thumbnail = $time.'-'.$file_name.'.'.$file_format;
         }
-
 
         DB::beginTransaction();
         try {
@@ -224,10 +226,10 @@ class BlogController extends Controller
             
         } catch (Exception $e) {
             DB::rollBack();
-            return Redirect::back()->withErrors($e->getMessage());
+            return Redirect::back()->with('notif', ['status' => 'error', 'title' => $e->getMessage()]);
         }
 
-        return redirect('admin/blog')->with('add-blog-successful', 'New blog has been submitted');
+        return redirect('admin/blog')->with('notif', ['status' => 'success', 'title' => 'New blog has been submitted']);
 
     }
 }

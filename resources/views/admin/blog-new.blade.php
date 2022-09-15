@@ -17,14 +17,6 @@
     </div>
 @endsection
 
-@section('notif')
-    <div class="mt-2">
-        @if($errors->any())
-            {!! implode('', $errors->all('<div class="alert alert-danger mb-0" role="alert">:message</div>')) !!}
-        @endif
-    </div>
-@endsection
-
 @section('content')
     <div class="row p-0 g-2">
         <div class="col-12 bg-white p-3">
@@ -38,7 +30,12 @@
                         Blog Title :
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title">
+                        @error('title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
@@ -46,12 +43,17 @@
                         Category :
                     </div>
                     <div class="col-md-10">
-                        <select id="cat" class="form-control w-50" name="category[]" multiple="multiple">
-                            <option></option>
+                        <select id="cat" class="form-control w-50 @error('category') is-invalid @enderror" name="category[]" multiple="multiple">
+                            <option value=""></option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        @error('category')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
@@ -59,7 +61,12 @@
                         Thumbnail :
                     </div>
                     <div class="col-md-10">
-                        <input type="file" name="thumbnail" class="form-control w-25">
+                        <input type="file" name="thumbnail" class="form-control w-25 @error('thumbnail') is-invalid @enderror">
+                        @error('thumbnail')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row g-2 mb-2">
@@ -67,7 +74,12 @@
                         Description :
                     </div>
                     <div class="col-md-10">
-                        <textarea id="" name="content" class="form-control" rows="13"></textarea>
+                        <textarea id="" name="content" class="form-control @error('content') is-invalid @enderror" rows="13"></textarea>
+                        @error('content')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="my-3 text-end">
@@ -84,6 +96,9 @@
             $('#cat').select2({
                 placeholder: "Select category",
             });
+
+            $(".select2-search").addClass("form-control @error('category') is-invalid @enderror")
+            $(".select2-selection").addClass('border-0')
         });
     </script>
 @endsection
