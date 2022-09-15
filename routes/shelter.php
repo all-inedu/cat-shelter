@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('shelter.index');
+});
+
+Route::get('/cat', function () {
+    return view('shelter.cat');
+});
+
+Route::get('/cat/{id}', function () {
+    return view('shelter.cat-view');
+});

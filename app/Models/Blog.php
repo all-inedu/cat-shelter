@@ -17,7 +17,9 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'content',
+        'thumbnail',
         'status',
+        'published_date',
     ];
 
     public function user()
@@ -28,6 +30,11 @@ class Blog extends Model
     public function category()
     {
         return $this->belongsToMany(Category::class, 'blog_categories', 'blog_id', 'category_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'blog_id', 'id');
     }
 
 }

@@ -26,27 +26,51 @@
                 <img src="{{ asset('img/bg-login.png') }}" alt="Login" class="login-bg w-100">
             </div>
             <div class="col-md-6">
-                <h3 class="text-center">Login as Shelter</h3>
-                <form action="" method="post">
+                <div class="position-absolute" style="top:10px;">
+                    <a href="/" class="text-decoration-none text-muted"><i class="bi bi-arrow-left me-1"></i> Home</a>
+                </div>
+
+                <!-- Session Status -->
+                {{-- <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')" />
+
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-4 alert alert-danger" :errors="$errors" /> --}}
+
+                <h3 class="text-center"><b>Login as Shelter</b></h3>
+                <form action="{{ route('login') }}" class="mt-5" method="post">
                     @csrf
                     <div class="row justify-content-center mt-4">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="user">Email</label>
-                                <input type="email" name="" id="user" class="form-control"
-                                    autocomplete="false" readonly onfocus="this.removeAttribute('readonly');">
+                                <input type="email" name="email" id="user"
+                                    class="form-control @error('email') is-invalid @enderror" autocomplete="false" readonly
+                                    onfocus="this.removeAttribute('readonly');">
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="pass">Password</label>
-                                <input type="password" name="" id="pass" class="form-control"
-                                    autocomplete="false">
+                                <input type="password" name="password" id="pass"
+                                    class="form-control  @error('password') is-invalid @enderror" autocomplete="false">
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+                            @if (Route::has('password.request'))
                             <div class="text-end">
-                                <a href="/forgot" class="text-muted text-decoration-none">Forgot Password?</a>
+                                <a href="{{ route('password.request', ['access' => 'shelter']) }}" class="text-muted text-decoration-none">Forgot Password?</a>
                             </div>
+                            @endif
                             <button class="btn btn-secondary mt-3 w-100" type="submit"><i
                                     class="bi bi-box-arrow-in-right me-1"></i>
-                                Login</button>
+                                Login
+                            </button>
                             <div class="mt-5 text-center text-muted">
                                 Dont have an account?
                                 <a href="/register" class="text-decoration-none fw-bold text-muted">

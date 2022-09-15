@@ -1,0 +1,13 @@
+.cat-text-primary {
+    color: #2C7DA0;
+}
+
+.cat-text-secondary {
+    color: #73B2CC;
+}
+
+.cat-bg-primary {
+    background: rgb(44, 125, 160);
+    background: linear-gradient(90deg, rgba(44, 125, 160, 1) 0%, rgb(120, 160, 178) 100%);
+    color: #fff;
+}

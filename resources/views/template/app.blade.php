@@ -10,6 +10,7 @@
         <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
         <link rel="stylesheet" href={{ asset('css/splide.min.css') }}>
         <link rel="stylesheet" href={{ asset('css/form.css') }}>
+        <link rel="stylesheet" href={{ asset('css/color.css') }}>
         <link rel="stylesheet" href={{ asset('css/intlTelInput.css') }}>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -62,6 +63,8 @@
     </head>
 
     <body>
+        <x-session-alert :notif="session('notif')"></x-session-alert>
+
         @yield('template')
     </body>
 

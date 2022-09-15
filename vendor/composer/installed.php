@@ -5,7 +5,11 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
+<<<<<<< HEAD
         'reference' => '2a4db8de60e16b0c1e2457320a5f4408d054e0ca',
+=======
+        'reference' => '05bd7a3222628d8c0edc4127d5773532410d105d',
+>>>>>>> a5fd83ef35db693620af77684dd53b8bb860c5a4
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -77,12 +81,12 @@
             'dev_requirement' => false,
         ),
         'dragonmantank/cron-expression' => array(
-            'pretty_version' => 'v3.3.1',
-            'version' => '3.3.1.0',
+            'pretty_version' => 'v3.3.2',
+            'version' => '3.3.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dragonmantank/cron-expression',
             'aliases' => array(),
-            'reference' => 'be85b3f05b46c39bbc0d95f6c071ddff669510fa',
+            'reference' => '782ca5968ab8b954773518e9e49a6f892a34b2a8',
             'dev_requirement' => false,
         ),
         'egulias/email-validator' => array(
@@ -418,16 +422,20 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+<<<<<<< HEAD
             'reference' => '2a4db8de60e16b0c1e2457320a5f4408d054e0ca',
+=======
+            'reference' => '05bd7a3222628d8c0edc4127d5773532410d105d',
+>>>>>>> a5fd83ef35db693620af77684dd53b8bb860c5a4
             'dev_requirement' => false,
         ),
         'laravel/serializable-closure' => array(
-            'pretty_version' => 'v1.2.1',
-            'version' => '1.2.1.0',
+            'pretty_version' => 'v1.2.2',
+            'version' => '1.2.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/serializable-closure',
             'aliases' => array(),
-            'reference' => 'd78fd36ba031a1a695ea5a406f29996948d7011b',
+            'reference' => '47afb7fae28ed29057fdca37e16a84f90cc62fae',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -527,12 +535,12 @@
             'dev_requirement' => false,
         ),
         'nette/utils' => array(
-            'pretty_version' => 'v3.2.7',
-            'version' => '3.2.7.0',
+            'pretty_version' => 'v3.2.8',
+            'version' => '3.2.8.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nette/utils',
             'aliases' => array(),
-            'reference' => '0af4e3de4df9f1543534beab255ccf459e7a2c99',
+            'reference' => '02a54c4c872b99e4ec05c4aec54b5a06eb0f6368',
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
@@ -777,18 +785,18 @@
             'dev_requirement' => false,
         ),
         'ramsey/uuid' => array(
-            'pretty_version' => '4.4.0',
-            'version' => '4.4.0.0',
+            'pretty_version' => '4.5.0',
+            'version' => '4.5.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../ramsey/uuid',
             'aliases' => array(),
-            'reference' => '373f7bacfcf3de038778ff27dcce5672ddbf4c8a',
+            'reference' => 'ef842484ba57f163c6d465ab744bfecb872a11d4',
             'dev_requirement' => false,
         ),
         'rhumsaa/uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.4.0',
+                0 => '4.5.0',
             ),
         ),
         'sebastian/cli-parser' => array(
@@ -819,12 +827,12 @@
             'dev_requirement' => true,
         ),
         'sebastian/comparator' => array(
-            'pretty_version' => '4.0.6',
-            'version' => '4.0.6.0',
+            'pretty_version' => '4.0.8',
+            'version' => '4.0.8.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/comparator',
             'aliases' => array(),
-            'reference' => '55f4261989e546dc112258c7a75935a81a7ce382',
+            'reference' => 'fa0f136dd2334583309d32b62544682ee972b51a',
             'dev_requirement' => true,
         ),
         'sebastian/complexity' => array(
@@ -855,12 +863,12 @@
             'dev_requirement' => true,
         ),
         'sebastian/exporter' => array(
-            'pretty_version' => '4.0.4',
-            'version' => '4.0.4.0',
+            'pretty_version' => '4.0.5',
+            'version' => '4.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/exporter',
             'aliases' => array(),
-            'reference' => '65e8b7db476c5dd267e65eea9cab77584d3cfff9',
+            'reference' => 'ac230ed27f0f98f597c8a2b6eb7ac563af5e5b9d',
             'dev_requirement' => true,
         ),
         'sebastian/global-state' => array(
@@ -918,12 +926,12 @@
             'dev_requirement' => true,
         ),
         'sebastian/type' => array(
-            'pretty_version' => '3.1.0',
-            'version' => '3.1.0.0',
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/type',
             'aliases' => array(),
-            'reference' => 'fb44e1cc6e557418387ad815780360057e40753e',
+            'reference' => 'fb3fe09c5f0bae6bc27ef3ce933a1e0ed9464b6e',
             'dev_requirement' => true,
         ),
         'sebastian/version' => array(
@@ -1209,12 +1217,12 @@
             'dev_requirement' => true,
         ),
         'tijsverkoyen/css-to-inline-styles' => array(
-            'pretty_version' => '2.2.4',
-            'version' => '2.2.4.0',
+            'pretty_version' => '2.2.5',
+            'version' => '2.2.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tijsverkoyen/css-to-inline-styles',
             'aliases' => array(),
-            'reference' => 'da444caae6aca7a19c0c140f68c6182e337d5b1c',
+            'reference' => '4348a3a06651827a27d989ad1d13efec6bb49b19',
             'dev_requirement' => false,
         ),
         'twbs/bootstrap' => array(

@@ -1,0 +1,4 @@
+views/dashboard.blade.php
+views/welcome.blade.php
+layouts/
+auth/

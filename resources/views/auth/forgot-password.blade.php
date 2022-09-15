@@ -18,6 +18,7 @@
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
+            <input type="hidden" name="access" value="{{ $request->access }}">
 
             <!-- Email Address -->
             <div>

@@ -209,8 +209,8 @@
     </div>
 
     {{-- Modal --}}
-    <div class="modal fade" id="catDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"id="catDetail" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
@@ -249,8 +249,9 @@
                         laborum corrupti excepturi quae consectetur, velit quis tempora.
                     </p>
                     <div class="text-center pt-3">
-                        <button class="btn btn-sm button-primary px-3 rounded-pill"> <i class="bi bi-cart-plus me-1"></i>
-                            Adopt Now</button>
+                        <a href="/screening/1" class="btn btn-sm button-primary px-3 rounded-pill"> <i
+                                class="bi bi-cart-plus me-1"></i>
+                            Adopt Now</a>
                     </div>
                 </div>
             </div>

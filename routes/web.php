@@ -13,26 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+require __DIR__ . '/shelter.php';
+require __DIR__ . '/admin.php';
+
 Route::get('/', function () {
     return view('home.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-
-Route::get('/login', function () {
-    return view('home.auth.login');
-});
-
-Route::get('/register', function () {
-    return view('home.auth.register');
-});
-
 Route::get('/cats', function () {
     return view('home.cats');
+});
+
+Route::get('/screening/{id}', function ($id) {
+    return view('home.screening', ['id' => $id]);
 });
 
 Route::get('/blogs', function () {
