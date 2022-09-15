@@ -33,7 +33,8 @@
                             <th nowrap>Phone Number</th>
                             <th nowrap>Email</th>
                             <th nowrap>Address</th>
-                            <th nowrap class="text-end">Joined Date</th>
+                            <th nowrap>Joined Date</th>
+                            <th nowrap class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-muted">
@@ -44,7 +45,13 @@
                                 <td>62812421421</td>
                                 <td>admin@gmail.com</td>
                                 <td>Jl Jeruk Kembar Bloq Q9 No 15</td>
-                                <td class="text-end">24 July 2022</td>
+                                <td nowrap>24 July 2022</td>
+                                <td nowrap class="text-end">
+                                    <a href="{{ url('/admin/adopter/' . $i) }}" class="btn button-primary">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Detail
+                                    </a>
+                                </td>
                             </tr>
                         @endfor
                     </tbody>

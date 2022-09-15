@@ -23,7 +23,7 @@
                                 Unadopted Cat
                             </div>
                             <div class="card-body">
-                                <h3 class="cat-text-primary">2</h3>
+                                <h3 class="cat-text-primary"><?php echo e($total_of_cat['unadopted']); ?></h3>
                                 <h5 class="cat-text-secondary">Cat</h5>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 Adopted Cat
                             </div>
                             <div class="card-body">
-                                <h3 class="cat-text-primary">1</h3>
+                                <h3 class="cat-text-primary"><?php echo e($total_of_cat['adopted']); ?></h3>
                                 <h5 class="cat-text-secondary">Cat</h5>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <hr class="hr-cat">
                         <div class="card cat-bg-primary text-center border-0 shadow-sm mt-3">
                             <div class="card-body text-center">
-                                <h3 class="text-white">2</h3>
+                                <h3 class="text-white"><?php echo e($total_blog); ?></h3>
                                 <h5 class="text-white">Blogs</h5>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                         <hr class="hr-cat">
                         <div class="card cat-bg-primary text-center border-0 shadow-sm mt-3">
                             <div class="card-body text-center">
-                                <h3 class="text-white">2</h3>
+                                <h3 class="text-white"><?php echo e($total_shelter); ?></h3>
                                 <h5 class="text-white">Shelter</h5>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                         <hr class="hr-cat">
                         <div class="card cat-bg-primary text-center border-0 shadow-sm mt-3">
                             <div class="card-body text-center">
-                                <h3 class="text-white">2</h3>
+                                <h3 class="text-white"><?php echo e($total_adopter); ?></h3>
                                 <h5 class="text-white">Adopter</h5>
                             </div>
                         </div>
@@ -107,14 +107,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for($i = 1; $i <= 5; $i++): ?>
+                            <?php $no = 1; ?>
+                            <?php $__currentLoopData = $recent_adoption; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $adoption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="text-center text-muted align-middle">
-                                    <td><?php echo e($i); ?></td>
-                                    <td>Cat Name</td>
-                                    <td>Adopter Name</td>
-                                    <td>24 July 2022</td>
+                                    <td><?php echo e($no++); ?></td>
+                                    <td><?php echo e($adoption->cat->name); ?></td>
+                                    <td><?php echo e($adoption->adopter->name); ?></td>
+                                    <td><?php echo e(date('d M Y H:i', strtotime($adoption->updated_at))); ?></td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -137,19 +138,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for($i = 1; $i <= 5; $i++): ?>
+                            <?php $no = 1; ?>
+                            <?php $__currentLoopData = $recent_blog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="text-center text-muted align-middle">
-                                    <td><?php echo e($i); ?></td>
-                                    <td nowrap>Cat Name</td>
-                                    <td nowrap>Adopter Name</td>
+                                    <td><?php echo e($no++); ?></td>
                                     <td>
-                                        <div class="" style="width:300px">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing..
+                                        <div style="width: 400px">
+                                            <?php echo e($blog->title); ?>
+
                                         </div>
                                     </td>
-                                    <td>24 July 2022</td>
+                                    <td>
+                                        <?php $__currentLoopData = $blog->category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="badge cat-bg-primary m-1">
+                                                <?php echo e($category->name); ?>
+
+                                            </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </td>
+                                    <td>
+                                        <div class="" style="width:400px">
+                                            <?php echo e(substr($blog->content, 0, 30)); ?> ...
+                                        </div>
+                                    </td>
+                                    <td><?php echo e(date('d M Y H:i', strtotime($blog->created_at))); ?></td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>

@@ -117,7 +117,7 @@
                                 <i class="bi bi-lock me-1"></i> Adopter
                             </td>
                             <td nowrap>
-                                <button class="btn button-primary" data-bs-toggle="modal" data-bs-target="#reply">
+                                <button class="btn button-primary" data-bs-toggle="modal" data-bs-target="#result">
                                     <i class="bi bi-info me-1"></i>
                                     Detail
                                 </button>
@@ -139,7 +139,7 @@
                                 </td>
                                 <td>-</td>
                                 <td nowrap>
-                                    <button class="btn button-primary" data-bs-toggle="modal" data-bs-target="#reply">
+                                    <button class="btn button-primary" data-bs-toggle="modal" data-bs-target="#result">
                                         <i class="bi bi-info me-1"></i>
                                         Detail
                                     </button>
@@ -169,8 +169,8 @@
         </div>
     </div>
 
-    {{-- Add Comment --}}
-    <div class="modal fade" id="reply" tabindex="-1">
+    {{-- Screening Result --}}
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"id="result" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <form action="" method="post">
                 <div class="modal-content">

@@ -1,4 +1,8 @@
 <style>
+    .nav li {
+        margin: 5px 0;
+    }
+
     .nav-item {
         background: rgb(44, 125, 160);
         background: linear-gradient(90deg, rgba(44, 125, 160, 1) 0%, rgba(184, 222, 239, 1) 100%);

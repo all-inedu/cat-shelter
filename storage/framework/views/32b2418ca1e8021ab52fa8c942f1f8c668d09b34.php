@@ -62,6 +62,7 @@
 
         <form method="POST" action="<?php echo e(route('password.email')); ?>">
             <?php echo csrf_field(); ?>
+            <input type="hidden" name="access" value="<?php echo e($request->access); ?>">
 
             <!-- Email Address -->
             <div>

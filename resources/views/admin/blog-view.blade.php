@@ -145,7 +145,7 @@
     </div>
 
     {{-- Delete Blog --}}
-    <div class="modal fade" id="delete" tabindex="-1">
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"id="delete" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">
@@ -174,7 +174,7 @@
     </div>
 
     {{-- Add Comment --}}
-    <div class="modal fade" id="reply" tabindex="-1">
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"id="reply" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <form action="{{ route('admin.blog.reply.comment') }}" method="post">
                 @csrf

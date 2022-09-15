@@ -13,17 +13,6 @@
         object-position: center;
     }
 
-    .user {
-        border-left: 5px solid #dedede;
-        padding-left: 20px;
-    }
-
-    .result {
-        position: relative;
-        max-height: 50vh;
-        overflow: auto
-    }
-
     .thumbnail-cat {
         width: 90px;
         height: 70px;
@@ -45,7 +34,7 @@
 @section('page-title')
     <div class="d-flex w-100 justify-content-between align-items-center">
         <div class="fw-bold text-muted">
-            Cat Detail
+            Shelter Detail
         </div>
         <a href="{{ url('admin/blog') }}" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>

@@ -142,17 +142,21 @@
                             @foreach ($recent_blog as $blog)
                                 <tr class="text-center text-muted align-middle">
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $blog->title }}</td>
+                                    <td>
+                                        <div style="width: 400px">
+                                            {{ $blog->title }}
+                                        </div>
+                                    </td>
                                     <td>
                                         @foreach ($blog->category as $category)
-                                        <div class="bg-primary m-1">
-                                            {{ $category->name }}
-                                        </div>
+                                            <div class="badge cat-bg-primary m-1">
+                                                {{ $category->name }}
+                                            </div>
                                         @endforeach
                                     </td>
                                     <td>
-                                        <div class="" style="width:300px">
-                                            {{ $blog->content }}
+                                        <div class="" style="width:400px">
+                                            {{ substr($blog->content, 0, 30) }} ...
                                         </div>
                                     </td>
                                     <td>{{ date('d M Y H:i', strtotime($blog->created_at)) }}</td>
