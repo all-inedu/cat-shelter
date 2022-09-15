@@ -5,11 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-<<<<<<< HEAD
-        'reference' => '2a4db8de60e16b0c1e2457320a5f4408d054e0ca',
-=======
-        'reference' => '05bd7a3222628d8c0edc4127d5773532410d105d',
->>>>>>> a5fd83ef35db693620af77684dd53b8bb860c5a4
+        'reference' => '99f7217b269427da743dedc8a9d8eed3cfb7c536',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -422,11 +418,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-<<<<<<< HEAD
-            'reference' => '2a4db8de60e16b0c1e2457320a5f4408d054e0ca',
-=======
-            'reference' => '05bd7a3222628d8c0edc4127d5773532410d105d',
->>>>>>> a5fd83ef35db693620af77684dd53b8bb860c5a4
+            'reference' => '99f7217b269427da743dedc8a9d8eed3cfb7c536',
             'dev_requirement' => false,
         ),
         'laravel/serializable-closure' => array(
