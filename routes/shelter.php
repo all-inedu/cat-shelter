@@ -25,6 +25,10 @@ Route::get('/cat', function () {
     return view('shelter.cat');
 });
 
+Route::get('/cat/new', function () {
+    return view('shelter.cat-new');
+});
+
 Route::get('/cat/{id}', function () {
     return view('shelter.cat-view');
 });

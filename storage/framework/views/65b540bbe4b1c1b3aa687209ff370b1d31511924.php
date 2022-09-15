@@ -27,11 +27,16 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/vue@3"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/h7t62ozvqkx2ifkeh051fsy3k9irz7axx1g2zitzpbaqfo8m/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/h7t62ozvqkx2ifkeh051fsy3k9irz7axx1g2zitzpbaqfo8m/tinymce/5/jquery.tinymce.min.js"
+            referrerpolicy="origin"></script>
+
+
 
 
         <style>
             @import  url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 
             body {
                 font-family: 'Poppins', sans-serif !important;
@@ -76,6 +81,19 @@
 <?php endif; ?>
 
         <?php echo $__env->yieldContent('template'); ?>
+
+        <script>
+            $('textarea').tinymce({
+                height: 300,
+                menubar: true,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+            });
+        </script>
     </body>
 
     </html>
