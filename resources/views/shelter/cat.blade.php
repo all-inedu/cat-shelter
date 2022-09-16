@@ -96,20 +96,22 @@
             {{-- Table --}}
             <div class="table-responsive">
                 <table class="table table-hover">
-                    <thead class="cat-bg-primary">
+                    <thead class="cat-bg-primary text-center">
                         <tr>
                             <th nowrap>No</th>
-                            <th nowrap>Name</th>
-                            <th nowrap>Type</th>
+                            <th nowrap>Cat Name</th>
+                            <th nowrap>Breed</th>
                             <th nowrap>Age</th>
                             <th nowrap>Weight</th>
                             <th nowrap>Thumbnail</th>
+                            <th nowrap>Adoption Request</th>
+                            <th nowrap>Adoption Status</th>
                             <th nowrap>Status</th>
                             <th nowrap>Published Date</th>
                             <th nowrap class="text-end">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-muted">
+                    <tbody class="text-muted text-center">
                         @for ($i = 1; $i < 8; $i++)
                             <tr class="align-middle">
                                 <td>{{ $i }}</td>
@@ -120,15 +122,42 @@
                                     4 Kg
                                 </td>
                                 <td class="text-center">
-                                    <div class="thumbnail-cat">
-                                        <img src="https://cataas.com/cat?type={{ $i }}" class="w-100"
-                                            loading="lazy">
+                                    <div class="d-flex justify-content-center w-100">
+                                        <div class="thumbnail-cat">
+                                            <img src="https://cataas.com/cat?type={{ $i }}" class="w-100"
+                                                loading="lazy">
+                                        </div>
                                     </div>
                                 </td>
-                                <td>Unadopted</td>
+                                <td>
+                                    <div class="badge bg-info rounded-pill">
+                                        <i class="bi bi-person me-1"></i>
+                                        10 Persons
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="badge bg-warning rounded-pill">
+                                        <i class="bi bi-search-heart me-1"></i>
+                                        Unadopted
+                                    </div>
+                                    <div class="badge bg-success rounded-pill">
+                                        <i class="bi bi-check me-1"></i>
+                                        Adopted
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="badge bg-danger rounded-pill">
+                                        <i class="bi bi-lock me-1"></i>
+                                        Close
+                                    </div>
+                                    <div class="badge bg-primary rounded-pill">
+                                        <i class="bi bi-unlock me-1"></i>
+                                        Open
+                                    </div>
+                                </td>
                                 <td>24 August 2022</td>
                                 <td nowrap class="text-end">
-                                    <a href="{{ url('/admin/cat/' . $i) }}" class="btn button-primary">
+                                    <a href="{{ url('/shelter/cat/' . $i) }}" class="btn button-primary">
                                         <i class="bi bi-info-circle me-1"></i>
                                         Detail
                                     </a>

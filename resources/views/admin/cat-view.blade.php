@@ -24,7 +24,7 @@
 </style>
 @extends('template.admin.main')
 
-@section('title', 'Blogs - Admin Dashboard')
+@section('title', 'Cats - Admin Dashboard')
 
 @section('page-title')
     <div class="d-flex w-100 justify-content-between align-items-center">
@@ -206,14 +206,10 @@
                             @endfor
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer text-end">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                             <i class="bi bi-x-circle me-1"></i>
                             Close
-                        </button>
-                        <button type="submit" class="btn button-primary">
-                            <i class="bi bi-save me-1"></i>
-                            Save changes
                         </button>
                     </div>
                 </div>

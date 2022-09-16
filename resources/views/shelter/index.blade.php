@@ -76,17 +76,18 @@
                 <div class="recent-list position-relative overflow-auto">
                     <div class="table-responsive">
                         <table class="table table-hover">
-                            <thead class="cat-bg-primary">
+                            <thead class="cat-bg-primary text-center">
                                 <tr>
                                     <th nowrap>No</th>
                                     <th nowrap>Thumbnail</th>
                                     <th nowrap>Cat Name</th>
-                                    <th nowrap>Status</th>
-                                    <th nowrap>Published Date</th>
+                                    <th nowrap>Adopter Name</th>
+                                    <th nowrap>Phone Number</th>
+                                    <th nowrap>Adoption Request Date</th>
                                     <th nowrap class="text-end">Action</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-muted">
+                            <tbody class="text-muted text-center">
                                 @for ($i = 1; $i < 4; $i++)
                                     <tr class="align-middle">
                                         <td>{{ $i }}</td>
@@ -97,7 +98,8 @@
                                             </div>
                                         </td>
                                         <td nowrap>Cat Name</td>
-                                        <td>Unadopted</td>
+                                        <td>Adopter Name</td>
+                                        <td>62823523523</td>
                                         <td>24 August 2022</td>
                                         <td nowrap class="text-end">
                                             <a href="{{ url('/admin/cat/' . $i) }}" class="btn button-primary"

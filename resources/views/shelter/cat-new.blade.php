@@ -16,7 +16,7 @@
     .label-image {
         width: 90px;
         height: 90px;
-        border: 3px dashed rgb(167, 167, 167);
+        border: 2px dashed rgb(167, 167, 167);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -29,7 +29,7 @@
         height: 90px;
         object-fit: cover;
         object-position: center;
-        border: 3px dashed rgb(167, 167, 167);
+        border: 2px dashed rgb(167, 167, 167);
         cursor: pointer;
     }
 </style>
@@ -40,9 +40,9 @@
 @section('page-title')
     <div class="d-flex w-100 justify-content-between align-items-center">
         <div class="fw-bold text-muted">
-            New Cat
+            Cat
         </div>
-        <a href="{{ url('shelter/cat/new') }}" class="btn button-primary">
+        <a href="{{ url('shelter/cat') }}" class="btn button-primary">
             <i class="bi bi-arrow-left me-1"></i>
             Back
         </a>
@@ -52,6 +52,8 @@
 @section('content')
     <div class="row p-0 g-2">
         <div class="col-12 bg-white p-3">
+            <h4>Add a Cat for Adoption</h4>
+            <hr class="hr-cat mb-3">
             {{-- Search --}}
             <form action="">
                 @csrf
@@ -72,6 +74,7 @@
                         <div class="mb-3">
                             Breed:
                             <select name="breed" id="breed" class="form-control @error('breed') is-invalid @enderror">
+                                <option value=""></option>
                                 <option value="1">Test 1</option>
                                 <option value="2">Test 2</option>
                                 <option value="3">Test 3</option>
@@ -154,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-12 mt-2s">
                         Description:
                         <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="10"></textarea>
                         @error('description')
@@ -165,7 +168,8 @@
                     </div>
 
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary mt-3" type="submit"><i class="bi bi-box-arrow-in-right me-1"></i>
+                        <button class="btn btn-secondary mt-3" type="submit"><i
+                                class="bi bi-box-arrow-in-right me-1"></i>
                             Submit
                         </button>
                     </div>

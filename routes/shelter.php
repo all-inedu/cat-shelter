@@ -32,3 +32,11 @@ Route::get('/cat/new', function () {
 Route::get('/cat/{id}', function () {
     return view('shelter.cat-view');
 });
+
+Route::get('/cat/{id}/edit', function () {
+    return view('shelter.cat-edit');
+});
+
+Route::get('/adopter/', function () {
+    return view('shelter.adopter');
+});
